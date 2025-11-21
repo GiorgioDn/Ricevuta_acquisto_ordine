@@ -5,7 +5,7 @@ def main():
     
     salvadanaio = Salvadanaio(100)
     
-    utente = Utente("me", "me", 18, "ciao", "34999", salvadanaio)
+    utente = Utente("me", "me", 18, "salve", "34999", salvadanaio)
     
     prodotti = {
         "computer": [50, 10],
@@ -13,6 +13,18 @@ def main():
     }
     
     negozio = Negozio("negozio", "negozio", prodotti)
+    
+    #apre il file per verificare l'utente
+    file = open("ricevuta.txt", "r")
+    #il metodo strip rimuove gli spazi bianchi
+    riga = file.readline().strip()
+    file.close()
+    #controlla se l'email è dell'utente corrente
+    if riga != utente.email:    
+        file = open ("ricevuta.txt", "w")
+        string = f"{utente.email}\n"
+        file.write(string)
+        file.close()
     
     while True:
            
@@ -23,15 +35,6 @@ def main():
         print("4. Ordinare un prodotto")
         print("5. Esci")
         chooice = int(input("Scegli una opzione: "))
-        
-        '''
-        file = open("ricevuta.txt", "r")
-        riga = file.readline()
-        file.close()
-        if riga == utente.cognome:    
-            with open ("ricevuta.txt", "a") as file:
-                file.write(string)
-        '''
         
         match chooice:
             case 1:
@@ -54,7 +57,7 @@ def main():
                 prodotto = input("Che prodotto vuoi ordinare: ")
                 quantita = int(input("Quanti ne vuoi ordinare: "))
                 
-                prodotto = negozio.cerca_prodotto(prodotto)
+                prodotto_1 = negozio.cerca_prodotto(prodotto)
                 
                 if utente.richiesta_acquisto(prodotto_1[0]) == True:
                     if negozio.compra_quantita(prodotto, quantita) == True:
