@@ -9,14 +9,14 @@ class Utente:
         self.recapito = recapito
         self.salvadanaio = salvadanaio
         
-    def richiesta_acquisto(self, costo):
-        #verifica se l'utente ha budget sufficiente per effettuare un acquisto
-        return self.salvadanaio.ha_budget(costo)
+    def richiesta_acquisto(self, costo):       
         #controlla se l'acquisto può essere effettuato e stampa il risultato
         if self.salvadanaio.spendi(costo):
             print("Acquisto riuscito!")
         else:
             print("Fondi insufficienti! Acquisto negato.")
+        
+        #return self.salvadanaio.ha_budget(costo) (forse non serve più)
     
 #classe salvadanaio con attributo budget e metodo per controllare se il budget è sufficiente per un costo dato
 class Salvadanaio:
