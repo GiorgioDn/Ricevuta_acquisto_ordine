@@ -1,5 +1,5 @@
 salve
-Ricevuta ordine prodotto: cuffie, per salve, in via: 34999
 Ricevuta acquisto prodotto: computer, per me me
+Ricevuta ordine prodotto: computer, per salve, in via: 34999
 Ricevuta acquisto prodotto: computer, per me me
-Ricevuta acquisto prodotto: cuffie, per me me
+Ricevuta ordine prodotto: computer, per salve, in via: 34999

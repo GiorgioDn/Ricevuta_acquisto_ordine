@@ -7,10 +7,10 @@ def main():
     
     utente = Utente("me", "me", 18, "salve", "34999", salvadanaio)
     
-    prodotti = {
-        "computer": [50, 10],
-        "cuffie":[10, 30]
-    }
+    prodotto_1 = Prodotto("computer", 10.0, 10)
+    prodotto_2 = Prodotto("cuffie", 10.0, 20)
+    
+    prodotti = [prodotto_1, prodotto_2]
     
     negozio = Negozio("negozio", "negozio", prodotti)
     
@@ -39,31 +39,42 @@ def main():
         match chooice:
             case 1:
                 prodotto = input("Che prodotto stai cercando: ")
-                print(negozio.cerca_prodotto(prodotto))
+                prodotto = negozio.cerca_prodotto(prodotto)
+                
+                negozio.cerca_prodotto(prodotto)
+                    
             case 2:
                 negozio.menu_prodotti()
             case 3:
                 prodotto = input("Che prodotto vuoi acquistare: ")
                 quantita = int(input("Quanti ne vuoi acquistare: "))
                 
-                prodotto_1 = negozio.cerca_prodotto(prodotto)
+                prodotto_search = negozio.cerca_prodotto(prodotto)
                 
-                if utente.richiesta_acquisto(prodotto_1[0]) == True:
-                    if negozio.compra_quantita(prodotto, quantita) == True:
-                        string = f"Ricevuta acquisto prodotto: {prodotto}, per {utente.nome} {utente.cognome}\n"                    
-                        with open ("ricevuta.txt", "a") as file:
-                            file.write(string)
+                if prodotto_search == True:
+                    for n in negozio.get_prodotti():
+                        if n.get_nome() == prodotto:
+                            if utente.richiesta_acquisto(n.get_prezzo()) == True:
+                                if negozio.compra_quantita(prodotto, quantita) == True:
+                                    string = f"Ricevuta acquisto prodotto: {prodotto}, per {utente.nome} {utente.cognome}\n"                    
+                                    with open ("ricevuta.txt", "a") as file:
+                                        file.write(string)
             case 4:
                 prodotto = input("Che prodotto vuoi ordinare: ")
                 quantita = int(input("Quanti ne vuoi ordinare: "))
                 
-                prodotto_1 = negozio.cerca_prodotto(prodotto)
+                prodotto_search = negozio.cerca_prodotto(prodotto)
                 
-                if utente.richiesta_acquisto(prodotto_1[0]) == True:
-                    if negozio.compra_quantita(prodotto, quantita) == True:
-                        string = f"Ricevuta ordine prodotto: {prodotto}, per {utente.email}, in via: {utente.recapito}\n"
-                        with open ("ricevuta.txt", "a") as file:
-                            file.write(string)
+                if prodotto_search == True:
+                    for n in negozio.get_prodotti():
+                        if n.get_nome() == prodotto:
+                            if utente.richiesta_acquisto(n.get_prezzo()) == True:
+                                if negozio.compra_quantita(prodotto, quantita) == True:
+                                    string = f"Ricevuta ordine prodotto: {prodotto}, per {utente.email}, in via: {utente.recapito}\n"                    
+                                    with open ("ricevuta.txt", "a") as file:
+                                        file.write(string)
+                
+                #string = f"Ricevuta ordine prodotto: {prodotto}, per {utente.email}, in via: {utente.recapito}\n"
             case 5:
                 break
             case _:
