@@ -73,8 +73,6 @@ def main():
                                     string = f"Ricevuta ordine prodotto: {prodotto}, per {utente.email}, in via: {utente.recapito}\n"                    
                                     with open ("ricevuta.txt", "a") as file:
                                         file.write(string)
-                
-                #string = f"Ricevuta ordine prodotto: {prodotto}, per {utente.email}, in via: {utente.recapito}\n"
             case 5:
                 break
             case _:
