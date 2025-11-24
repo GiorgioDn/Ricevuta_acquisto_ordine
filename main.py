@@ -49,30 +49,24 @@ def main():
                 prodotto = input("Che prodotto vuoi acquistare: ")
                 quantita = int(input("Quanti ne vuoi acquistare: "))
                 
-                prodotto_search = negozio.cerca_prodotto(prodotto)
-                
-                if prodotto_search == True:
-                    for n in negozio.get_prodotti():
-                        if n.get_nome() == prodotto:
-                            if utente.richiesta_acquisto(n.get_prezzo()) == True:
-                                if negozio.compra_quantita(prodotto, quantita) == True:
-                                    string = f"Ricevuta acquisto prodotto: {prodotto}, per {utente.nome} {utente.cognome}\n"                    
-                                    with open ("ricevuta.txt", "a") as file:
-                                        file.write(string)
+                for n in negozio.get_prodotti():
+                    if n.get_nome() == prodotto:
+                        if utente.richiesta_acquisto(n.get_prezzo()) == True:
+                            if negozio.compra_quantita(prodotto, quantita) == True:
+                                string = f"Ricevuta acquisto prodotto: {prodotto}, per {utente.nome} {utente.cognome}\n"                    
+                                with open ("ricevuta.txt", "a") as file:
+                                    file.write(string)
             case 4:
                 prodotto = input("Che prodotto vuoi ordinare: ")
                 quantita = int(input("Quanti ne vuoi ordinare: "))
                 
-                prodotto_search = negozio.cerca_prodotto(prodotto)
-                
-                if prodotto_search == True:
-                    for n in negozio.get_prodotti():
-                        if n.get_nome() == prodotto:
-                            if utente.richiesta_acquisto(n.get_prezzo()) == True:
-                                if negozio.compra_quantita(prodotto, quantita) == True:
-                                    string = f"Ricevuta ordine prodotto: {prodotto}, per {utente.email}, in via: {utente.recapito}\n"                    
-                                    with open ("ricevuta.txt", "a") as file:
-                                        file.write(string)
+                for n in negozio.get_prodotti():
+                    if n.get_nome() == prodotto:
+                        if utente.richiesta_acquisto(n.get_prezzo()) == True:
+                            if negozio.compra_quantita(prodotto, quantita) == True:
+                                string = f"Ricevuta ordine prodotto: {prodotto}, per {utente.email}, in via: {utente.recapito}\n"                    
+                                with open ("ricevuta.txt", "a") as file:
+                                    file.write(string)
             case 5:
                 break
             case _:
