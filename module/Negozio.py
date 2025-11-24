@@ -73,8 +73,8 @@ class Negozio:
                     quantita -=1
                     n.set_quantita(quantita)
                     return True
-            else:
-                return False
+                
+        return False
         
     #aumenta la quantità del prodotto disponibile 
     def restituisci_quantita(self, prodotto:str, quantita:int):
@@ -85,6 +85,6 @@ class Negozio:
                     quantita +=1
                     n.set_quantita(quantita)
                     return True
-            else:
-                return False
+        
+        return False
         
